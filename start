@@ -1,7 +1,11 @@
 #!/bin/bash
 
+/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+
 psql -U postgres -c "CREATE ROLE dc_user WITH PASSWORD 'localuser1234' SUPERUSER LOGIN;"
 psql -U postgres -c "CREATE DATABASE datacube WITH OWNER dc_user;"
 
 source activate cubeenv
 datacube -v system init
+
+exec "$@"
