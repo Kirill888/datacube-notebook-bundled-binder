@@ -5,15 +5,16 @@ channels:
 dependencies:
   - boto3
   - dask
+  - rasterio
   - datacube
   - descartes
   - distributed
   - folium
   - geopandas
   - hdmedians
-  - ipyleaflet
   - matplotlib
   - python=3.6.7
+  - python-graphviz
   - rasterstats
   - ruamel
   - ruamel.yaml
@@ -22,5 +23,20 @@ dependencies:
   - scipy
   - seaborn
   - shapely
-prefix: /opt/conda/envs/cubeenv
+  - tqdm
+  - pip
+  - pip:
+      - jupyterlab>=1.0.1
+      - ipyleaflet
+      - jupyter-server-proxy
+      - dask-labextension>=1.0
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_ui&subdirectory=libs/ui'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_index&subdirectory=libs/index'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_aws&subdirectory=libs/aws'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_geom&subdirectory=libs/geom'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_io&subdirectory=libs/io'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_ppt&subdirectory=libs/ppt'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_dscache&subdirectory=libs/dscache'
+      - 'git+https://github.com/opendatacube/dea-proto.git#egg=odc_dtools&subdirectory=libs/dtools'
 
+prefix: /opt/conda/envs/cubeenv

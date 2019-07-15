@@ -2,6 +2,15 @@
 
 set -eux
 
+# Jupyter lab extensions
+lab_extensions="dask-labextension @jupyter-widgets/jupyterlab-manager jupyter-leaflet"
+
+for e in $lab_extensions ; do
+    jupyter labextension install --no-build $e
+done
+jupyter lab build
+
+# DB setup
 PGDATA=${PGDATA:-"${HOME}/srv/pgsql"}
 if [ ! -d "$PGDATA" ]; then
   initdb -D "$PGDATA" --auth-host=md5 --encoding=UTF8
