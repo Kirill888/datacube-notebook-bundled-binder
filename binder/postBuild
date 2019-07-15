@@ -20,4 +20,4 @@ pg_ctl -D "$PGDATA" -l "$PGDATA/pg.log" start
 createdb -O "${USER}" "${USER}"
 
 chmod +x $HOME/init_db.sh
-$HOME/init_db.sh
+$HOME/init_db.sh || true
