@@ -5,13 +5,9 @@ set -eux
 # PostgreSQL Database initialisation
 
 THISDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DATABASE=$(awk '/db_database:/{print $2}' $THISDIR/.datacube.conf)
 
-DATABASE=$( grep db_database $THISDIR/.datacube.conf | awk '{ print $2 }' )
-USERNAME=$( grep db_username $THISDIR/.datacube.conf | awk '{ print $2 }' )
-PASSWORD=$( grep db_password $THISDIR/.datacube.conf | awk '{ print $2 }' )
-
-psql postgres -c "CREATE USER $USERNAME PASSWORD '$PASSWORD' SUPERUSER LOGIN"
-createdb -O $USERNAME $DATABASE
+createdb -O $USER $DATABASE
 
 datacube system init
 

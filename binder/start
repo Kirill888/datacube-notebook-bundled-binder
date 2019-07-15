@@ -2,7 +2,7 @@
 
 set -eux
 
-PGDATA=${PGDATA:-/home/jovyan/srv/pgsql}
+PGDATA=${PGDATA:-"${HOME}/srv/pgsql"}
 pg_ctl -D "$PGDATA" -l "$PGDATA/pg.log" start
 
 exec "$@"

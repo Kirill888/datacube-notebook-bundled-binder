@@ -2,12 +2,13 @@
 
 set -eux
 
-PGDATA=${PGDATA:-/home/jovyan/srv/pgsql}
+PGDATA=${PGDATA:-"${HOME}/srv/pgsql"}
 if [ ! -d "$PGDATA" ]; then
   initdb -D "$PGDATA" --auth-host=md5 --encoding=UTF8
 fi
 
 pg_ctl -D "$PGDATA" -l "$PGDATA/pg.log" start
+createdb -O "${USER}" "${USER}"
 
 chmod +x $HOME/init_db.sh
 $HOME/init_db.sh
